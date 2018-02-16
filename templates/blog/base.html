@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <title>47号海贼船</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="http://picturebag.qiniudn.com/blog.css">
+<script type="text/javascript">
+function show(){ 
+	var boxes = document.getElementsByName("notfull"); 
+	for(var i=0;i<boxes.length;i++)
+	{
+		text = boxes[i].innerHTML; 
+		hint = text.length > 1000 ? "...（此处省略一万字）" : "";
+		newBox = document.createElement("div"); 
+		newBox.innerHTML = text.substring(0,1000)+hint; 
+		boxes[i].innerHTML = ""; 
+		boxes[i].appendChild(newBox); 
+	}
+} 
+function checkform(){
+	var name= document.getElementsByName("username")[0].value;
+	var email= document.getElementsByName("email")[0].value;
+	var advice= document.getElementsByName("advice")[0].value;
+	if (name=="") {
+		alert("不要漏了你的大名");
+		return false;
+	}
+	if (email==""){
+		alert("不要漏了你的邮箱，万一我心情好给你发奖品了呢！");
+		return false;	
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-6">
+        <div class="header">
+	    <img src="https://p1.ssl.qhmsg.com/t011bc590f682004337.jpg" width="45%" style="border:5px solid gray" />
+	    <Br/>
+            <Br/>
+            <h1 class="brand-title"><a href="{% url 'blog_home' %}">Oliver Blog</a></h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="{% url 'blog_home' %}">主页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="{% url 'blog_list' %}">归档</a>
+                    </li>
+		    <Br/>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://github.com/Oliver0047">GitHub</a>
+                    </li>
+		    <Br/>
+                    <li class="nav-item">
+                        <a class="button-error pure-button" href="{% url 'blog_label' %}">标签集</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="{% url 'blog_advice' %}">建议</a>
+                    </li>
+		    <Br/>
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="{% url 'blog_about_me' %}">关于船长</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+ 
+ 
+    <div class="content pure-u-1 pure-u-md-5-6">
+        <div>
+            {% block content %}
+
+            {% endblock %}
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="{% url 'blog_about_me' %}">关于船长</a></li>
+                        <li><a href="{% url 'blog_advice' %}">建议</a></li>
+                        <li><a href="https://github.com/Oliver0047">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+show(); 
+</script>
+</body>
+</html>

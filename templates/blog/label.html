@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+ 
+{% block content %}
+<div class="posts">
+    <font size="10" color="gray"> <img src="https://b-ssl.duitang.com/uploads/item/201504/19/20150419H3716_RL3Ze.thumb.700_0.jpeg" width="10%" />&nbsp;&nbsp;&nbsp;*Oliver的标签集*--目前共{{length}}个标签
+</font>
+    <Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/>
+    {% for post in post_list %}
+	<font size="5">	
+	<a class="pure-button" href="https://www.baidu.com//s?ie=utf-8&f=8&tn=baidu&wd={{ post }}">{{ post }}</a>&nbsp;&nbsp;&nbsp;
+	</font>
+    {% endfor %}
+    <Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/><Br/>
+</div><!-- /.blog-label -->
+{% endblock %}
+ 
